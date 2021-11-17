@@ -2,6 +2,7 @@ package controller.attractions;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,28 +12,37 @@ import model.Attraction;
 import persistence.AttractionDAO;
 import persistence.commons.DAOFactory;
 
-@WebServlet("/createattraction.do")
+@WebServlet("/attractions/create.do")
 public class CreateAttractionServlet extends HttpServlet {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3455721046062278592L;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		RequestDispatcher dispatcher = getServletContext()
+				.getRequestDispatcher("/views/attractions/create-attraction.jsp");
+		dispatcher.forward(req, resp);
+	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//TODO validate data
 		
-		String name = request.getParameter("attracion-name");
-		Integer cost = Integer.parseInt(request.getParameter("attracion-cost"));
-		Double duration = Double.parseDouble(request.getParameter("attracion-duration"));
-		Integer capacity = Integer.parseInt(request.getParameter("attracion-capacity"));
+		String name = req.getParameter("name");
+		Integer cost = Integer.parseInt(req.getParameter("cost"));
+		Double duration = Double.parseDouble(req.getParameter("duration"));
+		Integer capacity = Integer.parseInt(req.getParameter("capacity"));
 		
 		Attraction attraction = new Attraction(-1, name, cost, duration, capacity);
 		
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
 		attractionDAO.insert(attraction);
 		
+		resp.sendRedirect("/turismo/attractions.do");
 	}
 
 }

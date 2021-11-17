@@ -68,45 +68,10 @@
 		<c:if test="${user.getAdmin()}">
 			<div></div>
 			<div>
-				<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#editAttraction">Nueva Atracci&oacute;n <i class="bi bi-plus-circle-fill"></i></button>
+				<a href="attractions/create.do" class="btn btn-light" role="button">Nueva Atracci&oacute;n <i class="bi bi-plus-circle-fill"></i></a>
 			</div>
 		</c:if>
 		
-		<form action="createattraction.do" method="post">
-			<div class="modal fade" id="editAttraction" tabindex="-1" role="dialog" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">Editar Atracci&oacute;n</h5>
-	        				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-								<div class="mb-3">
-									<label for="attracion-name" class="col-form-label">Nombre:</label>
-									<input type="text" class="form-control" id="attraction-name">
-								</div>
-								<div class="mb-3">
-									<label for="attracion-cost" class="col-form-label">Costo:</label>
-									<input class="form-control" id="attraction-cost"></input>
-								</div>
-								<div class="mb-3">
-									<label for="attracion-duration" class="col-form-label">Duration:</label>
-									<input class="form-control" id="attraction-duration"></input>
-								</div>
-								<div class="mb-3">
-									<label for="attracion-capacity" class="col-form-label">Capacity:</label>
-									<input class="form-control" id="attraction-capacity"></input>
-								</div>
-				
-						</div>
-						<div class="modal-footer">
-							<button type="submit" class="btn btn-light">Guardar</button>
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
 	</main>
 
 </body>
