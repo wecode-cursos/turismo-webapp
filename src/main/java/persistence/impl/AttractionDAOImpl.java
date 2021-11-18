@@ -32,6 +32,27 @@ public class AttractionDAOImpl implements AttractionDAO {
 		}
 	}
 
+	@Override
+	public Attraction findById(Integer id) {
+		try {
+			String sql = "SELECT * FROM ATTRACTIONS WHERE id = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			
+			ResultSet resultados = statement.executeQuery();
+
+			Attraction attraction = null;
+			if (resultados.next()) {
+				attraction = toAttraction(resultados);
+			}
+
+			return attraction;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
+	
 	private Attraction toAttraction(ResultSet attractionRegister) throws SQLException {
 		return new Attraction(attractionRegister.getInt(1), attractionRegister.getString(2),
 				attractionRegister.getInt(3), attractionRegister.getDouble(4), attractionRegister.getInt(5));
@@ -110,5 +131,7 @@ public class AttractionDAOImpl implements AttractionDAO {
 			throw new MissingDataException(e);
 		}
 	}
+
+
 
 }

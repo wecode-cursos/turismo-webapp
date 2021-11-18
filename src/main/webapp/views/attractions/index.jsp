@@ -48,12 +48,10 @@
 			<tbody>
 				<c:forEach items="${attractions}" var="attraction">
 					<tr>
-						<c:if test="${user.getAdmin()}">
+						<c:if test="${user.admin}">
 							<td>
-							<div class="btn-group" role="group">
- 									<button type="button" class="btn btn-light rounded-0"><i class="bi bi-pencil-fill"></i></button>
- 									<button type="button" class="btn btn-danger rounded"><i class="bi bi-x-circle-fill"></i></button>
-							</div>
+								<a href="attractions/edit.do?id=${attraction.id}" class="btn btn-light rounded-0" role="button"><i class="bi bi-pencil-fill"></i></a>
+								<a href="attractions/delete.do?id=${attraction.id}" class="btn btn-danger rounded" role="button"><i class="bi bi-x-circle-fill"></i></a>
 							</td>
 						</c:if>
 						<td><c:out value="${attraction.name}"></c:out></td>
