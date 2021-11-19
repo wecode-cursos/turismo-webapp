@@ -29,7 +29,7 @@ public class EditAttractionServlet extends HttpServlet {
 		req.setAttribute("attraction", attraction);
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/attractions/edit-attraction.jsp");
+				.getRequestDispatcher("/views/attractions/edit.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -46,6 +46,6 @@ public class EditAttractionServlet extends HttpServlet {
 		
 		attractionDAO.update(attraction);
 		
-		resp.sendRedirect("/turismo/attractions.do");
+		resp.sendRedirect("/turismo/attractions/index.do");
 	}
 }

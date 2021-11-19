@@ -13,8 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Attraction;
 import persistence.commons.DAOFactory;
 
-@WebServlet("/attractions.do")
-public class AttractionsListServlet extends HttpServlet implements Servlet {
+@WebServlet("/attractions/index.do")
+public class ListAttractionsServlet extends HttpServlet implements Servlet {
 	private static final long serialVersionUID = -8346640902238722429L;
 
 	@Override

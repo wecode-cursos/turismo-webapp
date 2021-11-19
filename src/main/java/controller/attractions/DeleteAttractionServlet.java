@@ -29,7 +29,7 @@ public class DeleteAttractionServlet extends HttpServlet {
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
 		attractionDAO.delete(attraction);
 
-		resp.sendRedirect("/turismo/attractions.do");
+		resp.sendRedirect("/turismo/attractions/index.do");
 	}
 
 

@@ -24,7 +24,7 @@ public class CreateAttractionServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		RequestDispatcher dispatcher = getServletContext()
-				.getRequestDispatcher("/views/attractions/create-attraction.jsp");
+				.getRequestDispatcher("/views/attractions/create.jsp");
 		dispatcher.forward(req, resp);
 	}
 
@@ -42,7 +42,7 @@ public class CreateAttractionServlet extends HttpServlet {
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
 		attractionDAO.insert(attraction);
 		
-		resp.sendRedirect("/turismo/attractions.do");
+		resp.sendRedirect("/turismo/attractions/index.do");
 	}
 
 }
