@@ -18,7 +18,6 @@ public class ConnectionProvider {
 		try {
 			properties.load(ConnectionProvider.class.getResourceAsStream("/env.properties"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		url = properties.getProperty("datasource");

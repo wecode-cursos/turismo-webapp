@@ -16,7 +16,6 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	// TODO Auto-generated method stub
     	req.getSession().removeAttribute("username");
 		req.setAttribute("flash", "¡Hasta pronto!");
 		

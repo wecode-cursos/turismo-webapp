@@ -10,23 +10,27 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.User;
-import persistence.UserDAO;
-import persistence.commons.DAOFactory;
+import services.LoginService;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private LoginService loginService;
 
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		loginService = new LoginService();
+	}
+	
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	// TODO Auto-generated method stub
     	String username = req.getParameter("username");
     	String password = req.getParameter("password");
     	
-    	UserDAO userDao = DAOFactory.getUserDAO();
-    	User user = userDao.findByUsername(username);
+    	User user = loginService.login(username, password);
     	
-    	if (user != null && user.checkPassword(password)) {
+    	if (!user.isNull()) {
     		req.getSession().setAttribute("user", user);
     		resp.sendRedirect("index.jsp");    		
        	} else {

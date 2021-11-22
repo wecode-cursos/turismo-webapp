@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.User;
+import model.nullobjects.NullUser;
 import persistence.UserDAO;
 import persistence.commons.ConnectionProvider;
 import persistence.commons.MissingDataException;
@@ -69,7 +70,7 @@ public class UserDAOImpl implements UserDAO {
 			statement.setString(1, username);
 			ResultSet resultados = statement.executeQuery();
 
-			User user = null;
+			User user = NullUser.build();
 
 			if (resultados.next()) {
 				user = toUser(resultados);
