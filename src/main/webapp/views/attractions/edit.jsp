@@ -32,7 +32,7 @@
 
 			</div>
 			<div>
-				<button type="submit" class="btn btn-primary btn-light">Guardar</button>
+				<button type="submit" class="btn btn-primary">Guardar</button>
 				<a onclick="window.history.back();" class="btn btn-secondary" role="button">Cancelar</a>
 			</div>
 		</form>

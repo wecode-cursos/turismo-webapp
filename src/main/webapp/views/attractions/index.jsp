@@ -50,7 +50,7 @@
 		<c:if test="${user.isAdmin()}">
 			<div></div>
 			<div>
-				<a href="/turismo/attractions/create.do" class="btn btn-light" role="button">Nueva
+				<a href="/turismo/attractions/create.do" class="btn btn-primary" role="button">Nueva
 					Atracci&oacute;n <i class="bi bi-plus-circle-fill"></i>
 				</a>
 			</div>

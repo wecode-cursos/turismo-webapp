@@ -10,6 +10,13 @@
 	<jsp:include page="/partials/nav.jsp"></jsp:include>
 
 	<main class="container">
+	
+		<c:if test="${errors != null && !errors.isEmpty()}">
+			<div class="alert alert-danger">
+				<p>Se encontraron errores al crear la atracción.</p>
+			</div>
+		</c:if>
+	
 		<form action="/turismo/attractions/create.do" method="post">
 			<div class="modal-body">
 				<div class="mb-3">
@@ -31,15 +38,13 @@
 						class="form-control" id="capacity" name="capacity" value='${capacity}'></input>
 						<div class="invalid-feedback"><c:out value='${errors.get("capacity")}'></c:out></div>
 				</div>
-
 			</div>
 			<div>
-				<button type="submit" class="btn btn-primary btn-light">Guardar</button>
+				<button type="submit" class="btn btn-primary">Guardar</button>
 				<a onclick="window.history.back();" class="btn btn-secondary"
 					role="button">Cancelar</a>
 			</div>
 		</form>
-
 	</main>
 </body>
 </html>
