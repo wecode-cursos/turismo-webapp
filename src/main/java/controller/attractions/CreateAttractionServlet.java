@@ -1,7 +1,6 @@
 package controller.attractions;
 
 import java.io.IOException;
-import java.util.Map;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -9,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Attraction;
 import services.AttractionService;
 
 @WebServlet("/attractions/create.do")
@@ -37,16 +37,11 @@ public class CreateAttractionServlet extends HttpServlet {
 		Double duration = Double.parseDouble(req.getParameter("duration"));
 		Integer capacity = Integer.parseInt(req.getParameter("capacity"));
 
-		Map<String, String> errores = attractionService.create(name, cost, duration, capacity);
-		if (errores.isEmpty()) {
+		Attraction attraction = attractionService.create(name, cost, duration, capacity);
+		if (attraction.isValid()) {
 			resp.sendRedirect("/turismo/attractions/index.do");
 		} else {
-			req.setAttribute("errors", errores);
-
-			req.setAttribute("name", name);
-			req.setAttribute("cost", cost);
-			req.setAttribute("duration", duration);
-			req.setAttribute("capacity", capacity);
+			req.setAttribute("attraction", attraction);
 
 			RequestDispatcher dispatcher = getServletContext()
 					.getRequestDispatcher("/views/attractions/create.jsp");

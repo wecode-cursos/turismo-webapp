@@ -10,33 +10,46 @@
 	<jsp:include page="/partials/nav.jsp"></jsp:include>
 
 	<main class="container">
-	
-		<c:if test="${errors != null && !errors.isEmpty()}">
+
+		<c:if test="${attraction != null && !attraction.isValid()}">
 			<div class="alert alert-danger">
 				<p>Se encontraron errores al crear la atracción.</p>
 			</div>
 		</c:if>
-	
+
 		<form action="/turismo/attractions/create.do" method="post">
 			<div class="modal-body">
 				<div class="mb-3">
 					<label for="name" class="col-form-label">Nombre:</label> <input
-						type="text" class="form-control" id="name" name="name" value='${name}'>
+						type="text" class="form-control" id="name" name="name"
+						value='${attraction.name}'>
 				</div>
 				<div class="mb-3 has-validation">
-					<label for="cost" class='col-form-label ${errors.get("cost") != null ? "is-invalid" : "" }'>Costo:</label> <input
-						class="form-control" id="cost" name="cost" value='${cost}'></input>
-					<div class="invalid-feedback"><c:out value='${errors.get("cost")}'></c:out></div>
+					<label for="cost"
+						class='col-form-label ${attraction.errors.get("cost") != null ? "is-invalid" : "" }'>Costo:</label>
+					<input class="form-control" id="cost" name="cost"
+						value='${attraction.cost}'></input>
+					<div class="invalid-feedback">
+						<c:out value='${attraction.errors.get("cost")}'></c:out>
+					</div>
 				</div>
 				<div class="mb-3">
-					<label for="duration" class="col-form-label ${errors.get("duration") != null ? "is-invalid" : "" }">Duration:</label> <input
-						class="form-control" id="duration" name="duration" value='${duration}'></input>
-						<div class="invalid-feedback"><c:out value='${errors.get("duration")}'></c:out></div>
+					<label for="duration"
+						class="col-form-label ${attraction.errors.get(" duration") !=null? "is-invalid" : "" }">Duration:</label>
+					<input class="form-control" id="duration" name="duration"
+						value='${attraction.duration}'></input>
+					<div class="invalid-feedback">
+						<c:out value='${attraction.errors.get("duration")}'></c:out>
+					</div>
 				</div>
 				<div class="mb-3">
-					<label for="capacity" class="col-form-label ${errors.get("capacity") != null ? "is-invalid" : "" }">Capacity:</label> <input
-						class="form-control" id="capacity" name="capacity" value='${capacity}'></input>
-						<div class="invalid-feedback"><c:out value='${errors.get("capacity")}'></c:out></div>
+					<label for="capacity"
+						class="col-form-label ${attraction.errors.get(" capacity") !=null? "is-invalid" : "" }">Capacity:</label>
+					<input class="form-control" id="capacity" name="capacity"
+						value='${attraction.capacity}'></input>
+					<div class="invalid-feedback">
+						<c:out value='${attraction.errors.get("capacity")}'></c:out>
+					</div>
 				</div>
 			</div>
 			<div>
