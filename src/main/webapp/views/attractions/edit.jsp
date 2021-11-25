@@ -28,7 +28,7 @@
 				<div class="mb-3">
 					<label for="cost"
 						class='col-form-label ${attraction.errors.get("cost") != null ? "is-invalid" : "" }'>Costo:</label>
-					<input class="form-control" id="cost" name="cost"
+					<input class="form-control" type="number" id="cost" name="cost"
 						value="${attraction.cost}"></input>
 					<div class="invalid-feedback">
 						<c:out value='${attraction.errors.get("cost")}'></c:out>
@@ -37,7 +37,7 @@
 				<div class="mb-3">
 					<label for="duration"
 						class='col-form-label ${attraction.errors.get("duration") != null ? "is-invalid" : "" }'">Duration:</label>
-					<input class="form-control" id="duration" name="duration"
+					<input class="form-control" type="number" id="duration" name="duration"
 						value="${attraction.duration}"></input>
 					<div class="invalid-feedback">
 						<c:out value='${attraction.errors.get("duration")}'></c:out>
@@ -46,7 +46,7 @@
 				<div class="mb-3">
 					<label for="capacity"
 						class='col-form-label ${attraction.errors.get("capacity") != null ? "is-invalid" : "" }'>Capacity:</label>
-					<input class="form-control" id="capacity" name="capacity"
+					<input class="form-control" type="number" id="capacity" name="capacity"
 						value="${attraction.capacity}"></input>
 					<div class="invalid-feedback">
 						<c:out value='${attraction.errors.get("capacity")}'></c:out>
