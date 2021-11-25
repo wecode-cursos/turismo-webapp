@@ -63,4 +63,18 @@ public class User {
 		return false;
 	}
 
+	public boolean canAfford(Attraction attraction) {
+		// attraction.getCost() <= this.money
+		return true;
+	}
+
+	public boolean canAttend(Attraction attraction) {
+		// attraction.getDuration() <= this.time
+		return true;
+	}
+
+	public void addToItinerary(Attraction attraction) {
+		// TODO Descontar dinero, agregar a su lista
+	}
+
 }

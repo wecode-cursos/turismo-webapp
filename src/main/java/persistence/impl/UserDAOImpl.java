@@ -81,6 +81,26 @@ public class UserDAOImpl implements UserDAO {
 			throw new MissingDataException(e);
 		}
 	}
+	
+	public User find(Integer id) {
+		try {
+			String sql = "SELECT * FROM USERS WHERE ID = ?";
+			Connection conn = ConnectionProvider.getConnection();
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet resultados = statement.executeQuery();
+
+			User user = NullUser.build();
+
+			if (resultados.next()) {
+				user = toUser(resultados);
+			}
+
+			return user;
+		} catch (Exception e) {
+			throw new MissingDataException(e);
+		}
+	}
 
 	public int countAll() {
 		try {

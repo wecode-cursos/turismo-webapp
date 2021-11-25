@@ -91,6 +91,14 @@ public class Attraction {
 				+ capacity + "]";
 	}
 
+	public boolean canHost(int i) {
+		return capacity >= i;
+	}
+
+	public void host(int i) {
+		this.capacity -= i;
+	}
+
 	
 	
 }

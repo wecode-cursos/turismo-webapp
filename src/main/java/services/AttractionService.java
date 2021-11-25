@@ -28,7 +28,7 @@ public class AttractionService {
 	public Attraction update(Integer id, String name, Integer cost, Double duration, Integer capacity) {
 
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		Attraction attraction = attractionDAO.findById(id);
+		Attraction attraction = attractionDAO.find(id);
 
 		attraction.setName(name);
 		attraction.setCost(cost);
@@ -52,7 +52,7 @@ public class AttractionService {
 
 	public Attraction find(Integer id) {
 		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		return attractionDAO.findById(id);
+		return attractionDAO.find(id);
 	}
 
 }
