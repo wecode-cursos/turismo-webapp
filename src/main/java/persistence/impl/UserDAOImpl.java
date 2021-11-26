@@ -81,7 +81,7 @@ public class UserDAOImpl implements UserDAO {
 			throw new MissingDataException(e);
 		}
 	}
-	
+
 	public User find(Integer id) {
 		try {
 			String sql = "SELECT * FROM USERS WHERE ID = ?";
@@ -137,8 +137,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	private User toUser(ResultSet userRegister) throws SQLException {
-		return new User(userRegister.getInt(1), userRegister.getString(2),
-				userRegister.getString(3), userRegister.getBoolean(4));
+		return new User(userRegister.getInt(1), userRegister.getString(2), userRegister.getString(3),
+				userRegister.getInt(5), userRegister.getDouble(6), userRegister.getBoolean(4));
 	}
 
 }

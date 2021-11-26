@@ -36,7 +36,7 @@
 			<tbody>
 				<c:forEach items="${attractions}" var="attraction">
 					<tr>
-						<td><c:out value="${attraction.name}"></c:out>
+						<td><strong><c:out value="${attraction.name}"></c:out></strong>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Cras pretium eros urna. Sed quis erat congue, bibendum tortor
 								malesuada, iaculis diam. Ut ut imperdiet sapien.</p></td>
@@ -51,10 +51,13 @@
 								<a href="/turismo/attractions/delete.do?id=${attraction.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if> <a href="/turismo/attractions/buy.do?id=${attraction.id}"
-							class="btn btn-success rounded" role="button">Comprar</a></td>
-							<!-- verificar si puede comprar, para mostrar el boton de compra -->
-							<!-- verificar si puede venderse, para mostrar el boton de compra -->
+							</c:if> <c:if
+								test="${user.canAfford(attraction) && attraction.canHost(1)}">
+								<a href="/turismo/attractions/buy.do?id=${attraction.id}"
+									class="btn btn-success rounded" role="button">Comprar</a>
+							</c:if></td>
+						<!-- verificar si puede comprar, para mostrar el boton de compra -->
+						<!-- verificar si puede venderse, para mostrar el boton de compra -->
 					</tr>
 				</c:forEach>
 			</tbody>
