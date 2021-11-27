@@ -16,6 +16,13 @@
 			<div class="alert alert-danger">
 				<p>
 					<c:out value="${flash}" />
+					<c:if test="${errors != null}">
+						<ul>
+							<c:forEach items="${errors}" var="entry">
+								<li><c:out value="${entry.getValue()}"></c:out></li>
+							</c:forEach>
+						</ul>
+					</c:if>
 				</p>
 			</div>
 		</c:if>
@@ -23,11 +30,11 @@
 		<div class="bg-light p-4 mb-3 rounded">
 			<h1>Estas son las atracciones de la Tierra Media</h1>
 		</div>
-		
+
 		<c:if test="${user.isAdmin()}">
 			<div class="mb-3">
-				<a href="/turismo/attractions/create.do" class="btn btn-primary" role="button">
-					<i class="bi bi-plus-lg"></i> Nueva Atracción
+				<a href="/turismo/attractions/create.do" class="btn btn-primary"
+					role="button"> <i class="bi bi-plus-lg"></i> Nueva Atracción
 				</a>
 			</div>
 		</c:if>
@@ -59,13 +66,18 @@
 								<a href="/turismo/attractions/delete.do?id=${attraction.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if> <c:if
-								test="${user.canAfford(attraction) && attraction.canHost(1)}">
-								<a href="/turismo/attractions/buy.do?id=${attraction.id}"
-									class="btn btn-success rounded" role="button">Comprar</a>
-							</c:if></td>
-						<!-- verificar si puede comprar, para mostrar el boton de compra -->
-						<!-- verificar si puede venderse, para mostrar el boton de compra -->
+							</c:if> <c:choose>
+
+								<c:when
+									test="${user.canAfford(attraction) && user.canAttend(attraction) && attraction.canHost(1)}">
+									<a href="/turismo/attractions/buy.do?id=${attraction.id}"
+										class="btn btn-success rounded" role="button">Comprar</a>
+								</c:when>
+								<c:otherwise>
+									<a href="#" class="btn btn-secondary rounded disabled"
+										role="button">No se puede comprar</a>
+								</c:otherwise>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -22,6 +22,7 @@ public class User {
 
 	public void addToItinerary(Attraction attraction) {
 		this.coins -= attraction.getCost();
+		this.time -= attraction.getDuration();
 		// TODO agregar a su lista
 	}
 
@@ -34,6 +35,7 @@ public class User {
 	}
 
 	public boolean checkPassword(String password) {
+		// this.password en realidad es el hash del password
 		return Crypt.match(password, this.password);
 	}
 

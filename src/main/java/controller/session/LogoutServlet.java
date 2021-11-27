@@ -16,7 +16,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	req.getSession().removeAttribute("username");
+    	req.getSession().removeAttribute("user");
 		req.setAttribute("flash", "¡Hasta pronto!");
 		
 		RequestDispatcher dispatcher = getServletContext()

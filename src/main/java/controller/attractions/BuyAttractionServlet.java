@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.User;
+import persistence.commons.DAOFactory;
 import services.BuyAttractionService;
 
 @WebServlet("/attractions/buy.do")
@@ -31,7 +32,8 @@ public class BuyAttractionServlet extends HttpServlet {
 		User user = (User) req.getSession().getAttribute("user");
 		Map<String, String> errors = buyAttractionService.buy(user.getId(), attractionId);
 		
-		// TODO: actualizar el usuario en sesión, con los nuevos datos
+		User user2 = DAOFactory.getUserDAO().find(user.getId());
+		req.getSession().setAttribute("user", user2);
 		
 		if (errors.isEmpty()) {
 			req.setAttribute("flash", "¡Gracias por comprar!");

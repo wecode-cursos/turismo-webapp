@@ -33,12 +33,13 @@ public class UserDAOImpl implements UserDAO {
 
 	public int update(User user) {
 		try {
-			String sql = "UPDATE USERS SET PASSWORD = ? WHERE USERNAME = ?";
+			String sql = "UPDATE USERS SET COINS = ?, TIME = ? WHERE ID = ?";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, user.getPassword());
-			statement.setString(2, user.getUsername());
+			statement.setInt(1, user.getCoins());
+			statement.setDouble(2, user.getTime());
+			statement.setDouble(3, user.getId());
 			int rows = statement.executeUpdate();
 
 			return rows;

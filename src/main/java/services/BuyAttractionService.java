@@ -35,8 +35,8 @@ public class BuyAttractionService {
 			attraction.host(1);
 
 			// no grabamos para no afectar la base de pruebas
-			// attractionDAO.update(attraction);
-			// userDAO.update(user);
+			attractionDAO.update(attraction);
+			userDAO.update(user);
 		}
 
 		return errors;
