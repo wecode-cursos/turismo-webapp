@@ -20,9 +20,17 @@
 			</div>
 		</c:if>
 
-		<div class="bg-light p-5 rounded">
+		<div class="bg-light p-4 mb-3 rounded">
 			<h1>Estas son las atracciones de la Tierra Media</h1>
 		</div>
+		
+		<c:if test="${user.isAdmin()}">
+			<div class="mb-3">
+				<a href="/turismo/attractions/create.do" class="btn btn-primary" role="button">
+					<i class="bi bi-plus-lg"></i> Nueva Atracción
+				</a>
+			</div>
+		</c:if>
 		<table class="table table-stripped table-hover">
 			<thead>
 				<tr>
@@ -62,16 +70,6 @@
 				</c:forEach>
 			</tbody>
 		</table>
-
-		<c:if test="${user.isAdmin()}">
-			<div></div>
-			<div>
-				<a href="/turismo/attractions/create.do" class="btn btn-primary"
-					role="button">Nueva Atracci&oacute;n <i
-					class="bi bi-plus-circle-fill"></i>
-				</a>
-			</div>
-		</c:if>
 
 	</main>
 
