@@ -14,7 +14,7 @@ public class AttractionService {
 
 	public Attraction create(String name, Integer cost, Double duration, Integer capacity) {
 
-		Attraction attraction = new Attraction(-1, name, cost, duration, capacity);
+		Attraction attraction = new Attraction(name, cost, duration, capacity);
 
 		if (attraction.isValid()) {
 			AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
@@ -51,8 +51,7 @@ public class AttractionService {
 	}
 
 	public Attraction find(Integer id) {
-		AttractionDAO attractionDAO = DAOFactory.getAttractionDAO();
-		return attractionDAO.find(id);
+		return DAOFactory.getAttractionDAO().find(id);
 	}
 
 }

@@ -1,6 +1,5 @@
 package controller.session;
 
-
 import java.io.IOException;
 
 import jakarta.servlet.RequestDispatcher;
@@ -14,13 +13,14 @@ import jakarta.servlet.http.HttpServletResponse;
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	req.getSession().removeAttribute("user");
-		req.setAttribute("flash", "¡Hasta pronto!");
-		
+	// service = doGet || doPost
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getSession().removeAttribute("user");
+		req.setAttribute("success", "¡Hasta pronto!");
+
 		RequestDispatcher dispatcher = getServletContext()
-  		      .getRequestDispatcher("/login.jsp");
-  		    dispatcher.forward(req, resp); 	
-    }
+				.getRequestDispatcher("/login.jsp");
+		dispatcher.forward(req, resp);
+	}
 }

@@ -17,12 +17,14 @@ public class UserDAOImpl implements UserDAO {
 
 	public int insert(User user) {
 		try {
-			String sql = "INSERT INTO USERS (USERNAME, PASSWORD) VALUES (?, ?)";
+			String sql = "INSERT INTO USERS (USERNAME, PASSWORD, COINS, TIME) VALUES (?, ?, ?, ?)";
 			Connection conn = ConnectionProvider.getConnection();
 
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getPassword());
+			statement.setInt(3, user.getCoins());
+			statement.setDouble(4, user.getTime());
 			int rows = statement.executeUpdate();
 
 			return rows;
@@ -79,6 +81,7 @@ public class UserDAOImpl implements UserDAO {
 
 			return user;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new MissingDataException(e);
 		}
 	}

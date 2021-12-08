@@ -1,5 +1,8 @@
 package model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import utils.Crypt;
 
 public class User {
@@ -9,6 +12,7 @@ public class User {
 	private Boolean admin;
 	private Integer coins;
 	private Double time;
+	private HashMap<String, String> errors;
 
 	public User(Integer id, String username, String password, Integer coins, Double time, Boolean admin) {
 		super();
@@ -95,6 +99,27 @@ public class User {
 		this.username = username;
 	}
 
+	
+	public boolean isValid() {
+		validate();
+		return errors.isEmpty();
+	}
+	
+	public void validate() {
+		errors = new HashMap<String, String>();
+
+		if (coins < 0) {
+			errors.put("coins", "No debe ser negativo");
+		}
+		if (time < 0) {
+			errors.put("time", "No debe ser negativo");
+		}
+	}
+	
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", admin=" + admin + "]";

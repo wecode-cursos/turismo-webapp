@@ -66,8 +66,9 @@
 								<a href="/turismo/attractions/delete.do?id=${attraction.id}"
 									class="btn btn-danger rounded" role="button"><i
 									class="bi bi-x-circle-fill"></i></a>
-							</c:if> <c:choose>
-
+							</c:if> 
+							
+							<c:choose>
 								<c:when
 									test="${user.canAfford(attraction) && user.canAttend(attraction) && attraction.canHost(1)}">
 									<a href="/turismo/attractions/buy.do?id=${attraction.id}"

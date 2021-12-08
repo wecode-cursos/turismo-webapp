@@ -13,13 +13,17 @@ public class Attraction {
 	
 	private Map<String, String> errors;
 	
-	public Attraction(Integer id, String name, Integer cost, Double duration, Integer capacity) {
+	public Attraction(String name, Integer cost, Double duration, Integer capacity) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.cost = cost;
 		this.duration = duration;
 		this.capacity = capacity;
+	}
+	
+	public Attraction(Integer id, String name, Integer cost, Double duration, Integer capacity) {
+		this(name, cost, duration, capacity);
+		this.id = id;
 	}
 	
 	public boolean isValid() {
@@ -35,6 +39,9 @@ public class Attraction {
 		}
 		if (duration <= 0) {
 			errors.put("duration", "Debe ser positivo");
+		}
+		if (duration > 60) {
+			errors.put("duration", "Excede el tiempo máximo");
 		}
 		if (capacity <= 0) {
 			errors.put("capacity", "Debe ser positivo");

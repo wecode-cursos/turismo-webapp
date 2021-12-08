@@ -12,6 +12,7 @@ public class NullUser extends User {
 		super(0, "", "", 0, 0.0, false);
 	}
 	
+	@Override
 	public boolean isNull() {
 		return true;
 	}

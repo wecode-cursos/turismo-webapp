@@ -21,6 +21,14 @@
 					</p>
 				</div>
 			</c:if>
+			
+			<c:if test="${success != null}">
+				<div class="alert alert-success">
+					<p>
+						<c:out value="${success}" />
+					</p>
+				</div>
+			</c:if>
 
 			<form action="login" method="post">
 
