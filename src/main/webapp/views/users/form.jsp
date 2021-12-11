@@ -28,7 +28,7 @@
 <div class="mb-3">
 	<label for="password"
 		class='col-form-label ${tmp_user.errors.get("password") != null ? "is-invalid" : "" }'>Contraseña:</label>
-	<input class="form-control" id="password" name="password"
+	<input class="form-control" type="password" id="password" name="password"
 		required value="${tmp_user.password}"></input>
 	<div class="invalid-feedback">
 		<c:out value='${tmp_user.errors.get("password")}'></c:out>

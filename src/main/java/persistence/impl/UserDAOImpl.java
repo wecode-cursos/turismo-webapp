@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, user.getCoins());
 			statement.setDouble(2, user.getTime());
-			statement.setDouble(3, user.getId());
+			statement.setInt(3, user.getId());
 			int rows = statement.executeUpdate();
 
 			return rows;
